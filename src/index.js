@@ -36,7 +36,12 @@ const app = (
 );
 
 const kc = new Keycloak('/keycloak.json');
-kc.init({onLoad: "login-required", promiseType: 'native'})
+kc.init({
+  onLoad: "login-required",
+  promiseType: 'native',
+  flow: 'implicit',
+  silentRefreshRedirectUri: window.location.origin + '/silent-refresh.html',
+})
   .then(authenticated => {
     if (authenticated) {
       store.getState().keycloak = kc;
