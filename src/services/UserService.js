@@ -14,11 +14,11 @@ const initKeycloak = (onAuthenticatedCallback) => {
     pkceMethod: 'S256',
   })
     .then((authenticated) => {
-      // if (authenticated) {
+      if (authenticated) {
       onAuthenticatedCallback();
-      // } else {
-      //   doLogin();
-      // }
+      } else {
+        doLogin();
+      }
     })
 };
 
